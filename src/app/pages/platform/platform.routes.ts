@@ -11,7 +11,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'guests',
-        component: GuestsComponent
+        loadChildren: () => import('./guests/guests.routes').then(r => r.routes),
       },
     ]
   },
