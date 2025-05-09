@@ -2,17 +2,17 @@
 
 <form [formGroup]="form">
   <label for="username">Username</label>
-  <input type="text" id="username" formControlName="username">
+  <input type="text" autocomplete="username" id="username" formControlName="username">
 
   <br>
   <br>
   <br>
 
   <label for="password">Password</label>
-  <input type="password" id="password" formControlName="password">
+  <input type="password" autocomplete="current-password" id="password" formControlName="password">
 
   <br>
   <br>
 
-  <button type="button" (click)="login()">Login</button>
+  <button type="button" [disabled]="!usernameControl?.valid || !passwordControl?.valid" (click)="login()">Login</button>
 </form>
