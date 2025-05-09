@@ -1,0 +1,26 @@
+<div class="file-upload-wrapper">
+  <div class="upload-box">
+    <label for="guests-import-input" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+    </label>
+    <p class="input-text">
+      Drag & Drop OR Click here (only .csv)
+    </p>
+    @if (currentFile()) {
+    <span class="filename">
+      {{ currentFile()?.name }}
+    </span>
+    }
+
+    <input #fileInput accept=".csv" (change)="onFileSelected($event)" class="file-input" id="guests-import-input"
+      type="file">
+  </div>
+
+  @if(isLoading()) {
+  <mat-progress-bar mode="determinate" [value]="loadingProgress()"></mat-progress-bar>
+  }
+
+  <button mat-raised-button [disabled]="!currentFile()" (click)="handleUpload()">
+    Import Guests
+    <mat-icon>download</mat-icon>
+  </button>
+</div>
