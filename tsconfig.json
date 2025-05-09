@@ -21,7 +21,15 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@buffetly/utils": [
+        "./src/app/utils/utils/index.ts"
+      ],
+      "@buffetly/data-access": [
+        "./src/app/data-access/index.ts"
+      ],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

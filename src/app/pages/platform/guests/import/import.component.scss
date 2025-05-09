@@ -1,0 +1,50 @@
+:host {
+  display: inline-block;
+  min-width: 350px;
+
+  .file-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    .upload-box {
+      height: 250px;
+      position: relative;
+
+      label[for="guests-import-input"] {
+        border: 2px dashed #ccc;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+      }
+
+      .input-text {
+        position: absolute;
+        top: calc(50% - 19px);
+        width: 100%;
+        text-align: center;
+        z-index: -1;
+        color: #ccc;
+      }
+
+      .filename {
+        position: absolute;
+        top: 51%;
+        text-align: center;
+        width: 100%;
+        color: #4f4f4f;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+
+    button {
+      align-self: flex-end;
+    }
+  }
+}
