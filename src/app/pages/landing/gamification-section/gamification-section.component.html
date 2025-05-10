@@ -1,0 +1,23 @@
+<section class="gamification-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Boost Staff Engagement with Gamification</h2>
+      <p>Turn routine tasks into engaging challenges that motivate your team</p>
+    </div>
+
+    <div class="gamification-features">
+      <div class="gamification-card" *ngFor="let feature of gamificationFeatures" [@pulseAnimation]>
+        <div class="card-icon">
+          <mat-icon>{{ feature.icon }}</mat-icon>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+
+    <div class="gamification-preview">
+      <!-- Replace with actual levels or achievements preview -->
+      <img src="assets/images/gamification-preview.png" alt="Staff Achievement Levels">
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">BreakfastTrack</div>
+        <p>Streamlining hotel breakfast management since 2025</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><mat-icon>facebook</mat-icon></a>
+          <a href="#" aria-label="Twitter"><mat-icon>twitter</mat-icon></a>
+          <a href="#" aria-label="LinkedIn"><mat-icon>linkedin</mat-icon></a>
+          <a href="#" aria-label="Instagram"><mat-icon>instagram</mat-icon></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="link-group">
+          <h4>Company</h4>
+          <ul>
+            <li *ngFor="let link of links.company">
+              <a [href]="link.url">{{ link.name }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="link-group">
+          <h4>Legal</h4>
+          <ul>
+            <li *ngFor="let link of links.legal">
+              <a [href]="link.url">{{ link.name }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="link-group">
+          <h4>Product</h4>
+          <ul>
+            <li *ngFor="let link of links.product">
+              <a [href]="link.url">{{ link.name }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} BreakfastTrack. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

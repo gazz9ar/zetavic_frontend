@@ -14,5 +14,7 @@
   <br>
   <br>
 
-  <button type="button" [disabled]="!usernameControl?.valid || !passwordControl?.valid" (click)="login()">Login</button>
+  <button mat-flat-button type="button" [disabled]="!usernameControl?.valid || !passwordControl?.valid"
+    (click)="login()">Login</button>
+  <a type="button" mat-button routerLink="../register">Sign up</a>
 </form>

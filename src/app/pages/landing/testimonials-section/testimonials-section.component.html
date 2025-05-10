@@ -1,0 +1,31 @@
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Our Customers Say</h2>
+    </div>
+
+    <div class="testimonial-carousel">
+      <div class="testimonial-content" [@fadeInOut]>
+        <div class="quote-mark">"</div>
+        <p class="quote">{{ testimonials[currentTestimonialIndex].quote }}</p>
+        <div class="author">
+          <p class="name">{{ testimonials[currentTestimonialIndex].author }}</p>
+          <p class="position">{{ testimonials[currentTestimonialIndex].position }}</p>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button mat-icon-button (click)="previousTestimonial()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="carousel-indicators">
+          <span *ngFor="let t of testimonials; let i = index" [class.active]="i === currentTestimonialIndex"
+            (click)="currentTestimonialIndex = i"></span>
+        </div>
+        <button mat-icon-button (click)="nextTestimonial()">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

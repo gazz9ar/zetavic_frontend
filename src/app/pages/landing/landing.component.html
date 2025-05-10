@@ -1,0 +1,41 @@
+<!-- landing-page.component.html -->
+<div class="landing-container">
+  <mat-toolbar color="primary" class="main-header" [class.visible]="isHeaderVisible" [@fadeIn]>
+    <span class="logo">BreakfastTrack</span>
+    <span class="spacer"></span>
+    <div class="nav-links">
+      <button mat-button (click)="scrollToSection('features')">Features</button>
+      <button mat-button (click)="scrollToSection('dashboard')">Dashboard</button>
+      <button mat-button (click)="scrollToSection('gamification')">Gamification</button>
+      <button mat-button (click)="scrollToSection('pricing')">Pricing</button>
+    </div>
+    <div class="auth-buttons">
+      <button mat-button>Login</button>
+      <button mat-raised-button color="accent">Start Free Trial</button>
+    </div>
+  </mat-toolbar>
+
+  <app-hero-section></app-hero-section>
+
+  <div id="features">
+    <app-features-section></app-features-section>
+  </div>
+
+  <div id="dashboard">
+    <app-dashboard-preview></app-dashboard-preview>
+  </div>
+
+  <div id="gamification">
+    <app-gamification-section></app-gamification-section>
+  </div>
+
+  <app-testimonials-section></app-testimonials-section>
+
+  <div id="pricing">
+    <app-pricing-section></app-pricing-section>
+  </div>
+
+  <app-cta-section></app-cta-section>
+
+  <app-footer-section></app-footer-section>
+</div>

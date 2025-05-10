@@ -3,10 +3,12 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
 import { LoginService } from '@buffetly/data-access';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -32,5 +34,9 @@ export class LoginComponent {
   login() {
     if (!this.usernameControl?.value || !this.passwordControl?.value) return;
     this.loginService.login(this.usernameControl!.value, this.passwordControl!.value).subscribe(x => console.log(x));
+  }
+
+  register() {
+
   }
 }

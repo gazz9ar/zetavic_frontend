@@ -1,0 +1,20 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content" [@fadeInUp]>
+      <h1 class="hero-title">{{ tagline }}</h1>
+      <p class="hero-description">{{ description }}</p>
+      <div class="hero-cta">
+        <button mat-raised-button color="accent" class="main-cta" [@staggeredFadeIn]="{delay: 0.5}">
+          Start Free Trial
+        </button>
+        <button mat-stroked-button color="primary" [@staggeredFadeIn]="{delay: 0.7}">
+          Book a Demo
+        </button>
+      </div>
+    </div>
+    <div class="hero-image" [@slideIn]>
+      <!-- Replace with actual image or illustration -->
+      <img src="assets/images/hero-dashboard.svg" alt="BreakfastTrack Dashboard Preview">
+    </div>
+  </div>
+</section>

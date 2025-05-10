@@ -1,0 +1,26 @@
+<section class="dashboard-preview-section">
+  <div class="container">
+    <div class="section-content">
+      <div class="preview-text">
+        <h2>Powerful Analytics Dashboard</h2>
+        <p>Make data-driven decisions with our comprehensive dashboard designed for hotel managers</p>
+
+        <ul class="feature-list">
+          <li *ngFor="let feature of dashboardFeatures">
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ feature }}</span>
+          </li>
+        </ul>
+
+        <button mat-raised-button color="primary">
+          See Dashboard in Action
+        </button>
+      </div>
+
+      <div class="preview-image" [@slideInFromRight]>
+        <!-- Replace with actual dashboard preview image -->
+        <img src="assets/images/dashboard-preview.png" alt="BreakfastTrack Analytics Dashboard">
+      </div>
+    </div>
+  </div>
+</section>
