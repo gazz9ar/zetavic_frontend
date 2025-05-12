@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, signal } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
@@ -10,6 +10,9 @@ import { PricingSectionComponent } from './pricing-section/pricing-section.compo
 import { FooterSectionComponent } from './footer-section/footer-section.component';
 import { CtaSectionComponent } from './cta-section/cta-section.component';
 import { MatButtonModule } from '@angular/material/button';
+import { delay, map, of } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop'
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-landing-page',
@@ -25,39 +28,12 @@ import { MatButtonModule } from '@angular/material/button';
     PricingSectionComponent,
     CtaSectionComponent,
     FooterSectionComponent,
-    MatButtonModule
+    MatButtonModule,
+    NgClass
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0, transform: 'translateY(30px)' })),
-      transition('void => *', [
-        animate('0.6s ease-out')
-      ])
-    ]),
-    trigger('slideIn', [
-      state('void', style({ opacity: 0, transform: 'translateX(-50px)' })),
-      transition('void => *', [
-        animate('0.5s 0.2s ease-out')
-      ])
-    ])
-  ]
 })
-export class LandingComponent implements OnInit, AfterViewInit {
-  isHeaderVisible = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    // Initialize any required data here
-  }
-
-  ngAfterViewInit(): void {
-    // Adding a small delay for the header animation
-    setTimeout(() => {
-      this.isHeaderVisible = true;
-    }, 100);
-  }
+export class LandingComponent {
 
   scrollToSection(section: string): void {
     const element = document.getElementById(section);
