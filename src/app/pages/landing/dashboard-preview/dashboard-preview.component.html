@@ -6,10 +6,13 @@
         <p>Make data-driven decisions with our comprehensive dashboard designed for hotel managers</p>
 
         <ul class="feature-list">
-          <li *ngFor="let feature of dashboardFeatures">
+          @for(feature of dashboardFeatures; track feature) {
+          <li>
             <mat-icon>check_circle</mat-icon>
             <span>{{ feature }}</span>
           </li>
+          }
+
         </ul>
 
         <button mat-raised-button color="primary">

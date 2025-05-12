@@ -6,13 +6,16 @@
     </div>
 
     <div class="gamification-features">
-      <div class="gamification-card" *ngFor="let feature of gamificationFeatures" [@pulseAnimation]>
+      @for(feature of gamificationFeatures; track feature) {
+      <div class="gamification-card" [@pulseAnimation]>
         <div class="card-icon">
           <mat-icon>{{ feature.icon }}</mat-icon>
         </div>
         <h3>{{ feature.title }}</h3>
         <p>{{ feature.description }}</p>
       </div>
+      }
+
     </div>
 
     <div class="gamification-preview">

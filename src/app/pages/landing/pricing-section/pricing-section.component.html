@@ -6,8 +6,9 @@
     </div>
 
     <div class="pricing-cards">
-      <mat-card class="pricing-card" *ngFor="let plan of pricingPlans" [class.highlighted]="plan.highlighted"
-        [@elevateOnHover]="plan.state" (mouseenter)="toggleCardState(plan)" (mouseleave)="toggleCardState(plan)">
+      @for(plan of pricingPlans; track plan) {
+      <mat-card class="pricing-card" [class.highlighted]="plan.highlighted" [@elevateOnHover]="plan.state"
+        (mouseenter)="toggleCardState(plan)" (mouseleave)="toggleCardState(plan)">
         <div class="card-header">
           <h3>{{ plan.name }}</h3>
           <div class="price">
@@ -20,10 +21,13 @@
         <mat-divider></mat-divider>
 
         <ul class="feature-list">
-          <li *ngFor="let feature of plan.features">
+          @for(feature of plan.features; track feature) {
+          <li>
             <mat-icon>check</mat-icon>
             <span>{{ feature }}</span>
           </li>
+          }
+
         </ul>
 
         <div class="card-actions">
@@ -32,6 +36,8 @@
           </button>
         </div>
       </mat-card>
+      }
+
     </div>
 
     <div class="pricing-note">

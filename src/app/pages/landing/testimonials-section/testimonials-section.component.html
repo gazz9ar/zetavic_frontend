@@ -19,8 +19,10 @@
           <mat-icon>arrow_back</mat-icon>
         </button>
         <div class="carousel-indicators">
-          <span *ngFor="let t of testimonials; let i = index" [class.active]="i === currentTestimonialIndex"
-            (click)="currentTestimonialIndex = i"></span>
+          @for(t of testimonials; track t; let i = $index) {
+          <span [class.active]="i === currentTestimonialIndex" (click)="currentTestimonialIndex = i"></span>
+          }
+
         </div>
         <button mat-icon-button (click)="nextTestimonial()">
           <mat-icon>arrow_forward</mat-icon>

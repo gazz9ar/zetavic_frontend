@@ -16,27 +16,36 @@
         <div class="link-group">
           <h4>Company</h4>
           <ul>
-            <li *ngFor="let link of links.company">
+            @for(link of links.company; track link) {
+            <li>
               <a [href]="link.url">{{ link.name }}</a>
             </li>
+            }
+
           </ul>
         </div>
 
         <div class="link-group">
           <h4>Legal</h4>
           <ul>
-            <li *ngFor="let link of links.legal">
+            @for(link of links.legal; track link) {
+            <li>
               <a [href]="link.url">{{ link.name }}</a>
             </li>
+            }
+
           </ul>
         </div>
 
         <div class="link-group">
           <h4>Product</h4>
           <ul>
-            <li *ngFor="let link of links.product">
+            @for(link of links.product; track link) {
+            <li>
               <a [href]="link.url">{{ link.name }}</a>
             </li>
+            }
+
           </ul>
         </div>
       </div>
