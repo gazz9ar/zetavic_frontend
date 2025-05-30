@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-hero-section',
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule],
   animations: [
     trigger('fadeInUp', [
       state('void', style({ opacity: 0, transform: 'translateY(40px)' })),

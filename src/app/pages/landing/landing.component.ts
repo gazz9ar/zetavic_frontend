@@ -10,9 +10,7 @@ import { PricingSectionComponent } from './pricing-section/pricing-section.compo
 import { FooterSectionComponent } from './footer-section/footer-section.component';
 import { CtaSectionComponent } from './cta-section/cta-section.component';
 import { MatButtonModule } from '@angular/material/button';
-import { delay, map, of } from 'rxjs';
-import { toSignal } from '@angular/core/rxjs-interop'
-import { NgClass } from '@angular/common';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -29,7 +27,6 @@ import { NgClass } from '@angular/common';
     CtaSectionComponent,
     FooterSectionComponent,
     MatButtonModule,
-    NgClass
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,14 +1,14 @@
 <section class="features-section">
   <div class="container">
     <div class="section-header">
-      <h2>Features Designed for Hotel Efficiency</h2>
-      <p>Everything you need to streamline your breakfast service and improve guest experience</p>
+      <h2 class="title">Features Designed for Hotel Efficiency</h2>
+      <p class="description">Everything you need to streamline your breakfast service and improve guest experience</p>
     </div>
 
     <div class="features-grid">
       @for(feature of features; track feature; let i = $index) {
       <mat-card class="feature-card" [@fadeInFromBottom]="{delay: 0.1 * i}">
-        <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>
+        <mat-icon class="feature-icon" color="primary">{{ feature.icon }}</mat-icon>
         <h3 class="feature-title">{{ feature.title }}</h3>
         <p class="feature-description">{{ feature.description }}</p>
       </mat-card>

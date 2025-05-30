@@ -1,6 +1,7 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -8,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './testimonials-section.component.html',
   styleUrls: ['./testimonials-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatButtonModule],
   animations: [
     trigger('fadeInOut', [
       state('void', style({ opacity: 0 })),

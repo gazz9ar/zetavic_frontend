@@ -1,11 +1,12 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-cta-section',
   templateUrl: './cta-section.component.html',
   styleUrls: ['./cta-section.component.scss'],
-  imports: [],
+  imports: [MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('bounce', [

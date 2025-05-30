@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
   animations: [
     trigger('elevateOnHover', [
       state('default', style({ transform: 'translateY(0)' })),
-      state('hovered', style({ transform: 'translateY(-10px)' })),
+      state('hovered', style({ transform: 'translateY(-10px) scale(1.01)' })),
       transition('default <=> hovered', [
         animate('0.3s')
       ])

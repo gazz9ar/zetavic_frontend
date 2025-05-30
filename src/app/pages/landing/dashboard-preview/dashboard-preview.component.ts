@@ -1,11 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard-preview',
   templateUrl: './dashboard-preview.component.html',
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatButtonModule],
   styleUrls: ['./dashboard-preview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
