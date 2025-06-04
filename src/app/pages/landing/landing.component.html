@@ -10,7 +10,7 @@
       <button mat-button (click)="scrollToSection('pricing')">Pricing</button>
     </div> -->
     <div class="auth-buttons">
-      <button mat-button>Login</button>
+      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
       <button mat-raised-button color="accent">Start Free Trial</button>
     </div>
   </mat-toolbar>

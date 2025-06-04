@@ -10,6 +10,7 @@ import { PricingSectionComponent } from './pricing-section/pricing-section.compo
 import { FooterSectionComponent } from './footer-section/footer-section.component';
 import { CtaSectionComponent } from './cta-section/cta-section.component';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -27,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
     CtaSectionComponent,
     FooterSectionComponent,
     MatButtonModule,
+    RouterLink
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
