@@ -5,10 +5,11 @@ import { environment } from '../../../enviroments/enviroments';
 import { LoginService } from '@buffetly/data-access';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { GoogleSsoComponent } from '../../ui/google-sso/google-sso.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, MatButtonModule],
+  imports: [ReactiveFormsModule, RouterLink, MatButtonModule, GoogleSsoComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
