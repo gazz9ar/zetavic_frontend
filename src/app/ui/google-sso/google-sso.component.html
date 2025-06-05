@@ -1,6 +1,3 @@
-<div id="g_id_onload" data-client_id="127439604840-7np0cir3ccqb2718bgdcso39uddsvl7d.apps.googleusercontent.com"
-  data-login_uri="https://buffetly.netlify.app/login" data-auto_prompt="false">
-</div>
-<div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
-  data-shape="rectangular" data-logo_alignment="left">
-</div>
+@if(!SSRservice.isSSR()) {
+<div id="google-signin-button" class="google-signin-container"></div>
+}
