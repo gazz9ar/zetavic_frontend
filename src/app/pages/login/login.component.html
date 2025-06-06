@@ -1,20 +1,47 @@
-<ui-google-sso></ui-google-sso>
+<div class="login-wrapper">
+  <h3 class="title">
+    {{
+    isFreeTrial() ? 'Start 14 days free trial' : 'Login'
+    }}
+  </h3>
+  <ui-google-sso [isSignUp]="isFreeTrial()"></ui-google-sso>
 
-<form [formGroup]="form">
-  <label for="username">Username</label>
-  <input type="text" autocomplete="username" id="username" formControlName="username">
+  <div class="section-divider">
+    <span class="divider"></span>
+    <span>o</span>
+    <span class="divider"></span>
+  </div>
 
-  <br>
-  <br>
-  <br>
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error>
+        Email is required
+      </mat-error>
+    </mat-form-field>
 
-  <label for="password">Password</label>
-  <input type="password" autocomplete="current-password" id="password" formControlName="password">
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" required="">
+      <mat-error>
+        Password is required
+      </mat-error>
+    </mat-form-field>
 
-  <br>
-  <br>
+    <mat-checkbox formControlName="terms">I accept the terms & conditions
+      @if(form.get('terms')?.hasError('required') && form.get('terms')?.touched) {
+      <mat-error>
+        required
+      </mat-error>
+      }
 
-  <button mat-flat-button type="button" [disabled]="!usernameControl?.valid || !passwordControl?.valid"
-    (click)="login()">Login</button>
-  <a type="button" mat-button routerLink="../register">Sign up</a>
-</form>
+    </mat-checkbox>
+
+    <button mat-flat-button type="button" class="login-button" (click)="login()">{{
+      isFreeTrial() ? 'Begin' : 'Login'
+      }}</button>
+  </form>
+
+
+</div>

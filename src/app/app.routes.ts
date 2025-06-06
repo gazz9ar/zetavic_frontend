@@ -8,11 +8,11 @@ import { LandingComponent } from './pages/landing/landing.component';
 export const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    loadComponent: () => LoginComponent
   },
   {
     path: 'register',
-    component: RegisterComponent
+    loadComponent: () => RegisterComponent
   },
   {
     path: 'platform',

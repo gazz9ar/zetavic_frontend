@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { SsrService } from '../../data-access/ssr/ssr.service';
 import { log } from 'console';
 declare const google: any;
@@ -14,6 +14,9 @@ declare const google: any;
 export class GoogleSsoComponent {
   SSRservice = inject(SsrService);
 
+  onLoadGoogleService = output();
+  isSignUp = input(false);
+
   ngOnInit(): void {
     if (!this.SSRservice.isSSR()) {
       this.initializeGoogleSignIn();
@@ -28,7 +31,7 @@ export class GoogleSsoComponent {
         use_fedcm_for_prompt: true,
         auto_select: false,
         cancel_on_tap_outside: true,
-        context: 'use', // 'signin', 'signup', or 'use'
+        context: this.isSignUp() ? 'signup' : 'signin', // 'signin', 'signup', or 'use'
         ux_mode: 'popup'
       });
 
@@ -60,18 +63,18 @@ export class GoogleSsoComponent {
   }
 
   private renderSignInButton(): void {
-    setTimeout(() => {
-      const buttonDiv = document.getElementById("google-signin-button");
-      if (buttonDiv) {
-        google.accounts.id.renderButton(buttonDiv, {
-          theme: "outline",
-          size: "large",
-          text: "signin_with",
-          shape: "rectangular",
-          logo_alignment: "left"
-        });
-      }
-    }, 500);
+    const buttonDiv = document.getElementById("google-signin-button");
+    if (buttonDiv) {
+      google.accounts.id.renderButton(buttonDiv, {
+        theme: "outline",
+        size: "large",
+        text: "signup_with",
+        shape: "rectangular",
+        logo_alignment: "left"
+      });
+    }
+
+    this.onLoadGoogleService.emit();
   }
 
   private handleFedCMError(error: any): void {
@@ -97,7 +100,8 @@ export class GoogleSsoComponent {
       callback: (response: any) => this.handleGoogleResponse(response),
       use_fedcm_for_prompt: false, // Fallback sin FedCM temporalmente
       auto_select: false,
-      cancel_on_tap_outside: true
+      cancel_on_tap_outside: true,
+      context: this.isSignUp() ? 'signup' : 'signin', // 'signin', 'signup', or 'use'
     });
 
     this.renderSignInButton();
@@ -105,6 +109,7 @@ export class GoogleSsoComponent {
 
   // Tu método del controlador que manejará la respuesta
   handleGoogleResponse(response: any): void {
+    this.onLoadGoogleService.emit();
     console.log('Respuesta de Google:', response);
 
     // Decodificar el JWT token para obtener la información del usuario
