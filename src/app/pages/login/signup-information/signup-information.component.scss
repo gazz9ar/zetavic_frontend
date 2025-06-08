@@ -1,0 +1,72 @@
+:host {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .signup-wrapper {
+    max-width: 450px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+
+    .perks {
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+      border: 1px solid #ff00cd1c;
+      background: #ff00cd1c;
+
+      .title {
+        color: #3b3b3b;
+        margin-bottom: 10px;
+      }
+
+      .detail-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #3b3b3b;
+        align-self: flex-start;
+
+        .success-icon {
+          width: 24px;
+          height: 24px;
+          font-size: 24px;
+        }
+      }
+    }
+
+
+    .success-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .title {
+        color: #3b3b3b;
+      }
+
+
+    }
+
+    .success-icon {
+      color: #059669;
+      width: 80px;
+      height: 80px;
+      font-size: 80px;
+    }
+
+    .description {
+      color: #3b3b3b;
+    }
+  }
+}

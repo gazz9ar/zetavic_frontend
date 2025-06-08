@@ -8,7 +8,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => LoginComponent
+    loadChildren: () => import('./pages/login/login.routes').then(x => x.routes)
   },
   {
     path: 'register',

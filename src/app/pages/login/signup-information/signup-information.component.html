@@ -1,0 +1,24 @@
+<div class="signup-wrapper">
+
+  <div class="success-wrapper">
+    <mat-icon class="success-icon">check_circle</mat-icon>
+    <h3 class="title">
+      Account created successfully!
+    </h3>
+    <span class="description">Your 14-day free trial has started</span>
+
+  </div>
+
+  <div class="perks">
+    <strong class="title">What your free trial includes:</strong>
+
+    @for(item of trialFeatures(); track item) {
+    <div class="detail-line">
+      <mat-icon class="success-icon">check_circle</mat-icon>
+      <p>{{ item }}</p>
+    </div>
+    }
+  </div>
+
+
+</div>

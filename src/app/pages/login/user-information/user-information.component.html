@@ -1,0 +1,62 @@
+<div class="info-wrapper">
+  <h3>
+    Tell us about yourself in order to customize your experience
+  </h3>
+
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Full name</mat-label>
+      <input matInput formControlName="fullname" required>
+      <mat-error>
+        Full name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Company name</mat-label>
+      <input matInput formControlName="company" required>
+      <mat-error>
+        Company name is required
+      </mat-error>
+    </mat-form-field>
+
+    <div class="user-type-wrapper" [ngClass]="{active: selectedUserType() === 'ceo'}">
+      <button class="user-type" type="button" (click)="selectUserType('ceo')">
+        <div class="icon">
+          👨‍💼
+        </div>
+        <span>CEO/Founder</span>
+      </button>
+    </div>
+
+    <div class="user-type-wrapper" [ngClass]="{active: selectedUserType() === 'marketing'}">
+      <button class="user-type" type="button" (click)="selectUserType('marketing')">
+        <div class="icon">
+          📈
+        </div>
+        <span>Marketing</span>
+      </button>
+    </div>
+
+    <div class="user-type-wrapper" [ngClass]="{active: selectedUserType() === 'developer'}">
+      <button class="user-type" type="button" (click)="selectUserType('developer')">
+        <div class="icon">
+          💻
+        </div>
+        <span>Developer</span>
+      </button>
+    </div>
+
+    <div class="user-type-wrapper" [ngClass]="{active: selectedUserType() === 'other'}">
+      <button class="user-type" type="button" (click)="selectUserType('other')"
+        [ngClass]="{active: selectedUserType() === 'other'}">
+        <div class="icon">
+          👥
+        </div>
+        <span>Other</span>
+      </button>
+    </div>
+
+    <button mat-flat-button type="button" class="confirm-button">Continue</button>
+  </form>
+</div>
