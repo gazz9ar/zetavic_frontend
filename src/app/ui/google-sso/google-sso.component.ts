@@ -1,6 +1,7 @@
+import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
-import { SsrService } from '../../data-access/ssr/ssr.service';
-import { log } from 'console';
+import { SsrService } from '@buffetly/data-access';
+import { GooglePayload } from '@buffetly/utils';
 declare const google: any;
 
 
@@ -13,8 +14,10 @@ declare const google: any;
 })
 export class GoogleSsoComponent {
   SSRservice = inject(SsrService);
+  document = inject(DOCUMENT);
 
-  onLoadGoogleService = output();
+  onSuccess = output<GooglePayload>();
+  onErrorPopupFedCM = output();
   isSignUp = input(false);
 
   ngOnInit(): void {
@@ -47,38 +50,30 @@ export class GoogleSsoComponent {
   private showGooglePrompt(): void {
     google.accounts.id.prompt((notification: any) => {
       console.log('Prompt notification:', notification);
-
-      if (notification.isNotDisplayed()) {
-        console.log('Prompt no se mostró:', notification.getNotDisplayedReason());
-
-        // Si el prompt no se muestra, usar botón manual
+      if (notification.i !== "credential_returned") {
+        this.onErrorPopupFedCM.emit();
         this.renderSignInButton();
-      } else if (notification.isSkippedMoment()) {
-        console.log('Prompt fue saltado:', notification.getSkippedReason());
-        this.renderSignInButton();
-      } else if (notification.isDismissedMoment()) {
-        console.log('Prompt fue cerrado:', notification.getDismissedReason());
       }
     });
   }
 
   private renderSignInButton(): void {
-    const buttonDiv = document.getElementById("google-signin-button");
+    const buttonDiv = this.document.getElementById("google-signin-button");
     if (buttonDiv) {
       google.accounts.id.renderButton(buttonDiv, {
         theme: "outline",
         size: "large",
-        text: "signup_with",
+        text: this.isSignUp() ? "signup_with" : "signin_with",
         shape: "rectangular",
         logo_alignment: "left"
       });
     }
 
-    this.onLoadGoogleService.emit();
   }
 
   private handleFedCMError(error: any): void {
     console.log('FedCM Error:', error);
+    this.onErrorPopupFedCM.emit();
 
     // Diferentes estrategias según el error
     if (error.message && error.message.includes('FedCM')) {
@@ -107,17 +102,12 @@ export class GoogleSsoComponent {
     this.renderSignInButton();
   }
 
-  // Tu método del controlador que manejará la respuesta
   handleGoogleResponse(response: any): void {
-    this.onLoadGoogleService.emit();
-    console.log('Respuesta de Google:', response);
 
-    // Decodificar el JWT token para obtener la información del usuario
-    const userInfo = this.decodeJWT(response.credential);
-    console.log('Información del usuario:', userInfo);
+    // const userInfo = this.decodeJWT(response.credential);
+    console.log(response.credential);
 
-    // Aquí puedes procesar la información del usuario
-    this.processUserLogin(userInfo);
+    this.onSuccess.emit(response.credential);
   }
 
   private decodeJWT(token: string): any {
@@ -134,27 +124,6 @@ export class GoogleSsoComponent {
     } catch (error) {
       console.error('Error al decodificar JWT:', error);
       return null;
-    }
-  }
-
-  private processUserLogin(userInfo: any): void {
-    if (userInfo) {
-      // Procesar la información del usuario
-      console.log('Nombre:', userInfo.name);
-      console.log('Email:', userInfo.email);
-      console.log('Imagen:', userInfo.picture);
-
-      // Aquí puedes hacer lo que necesites con la información:
-      // - Guardar en localStorage/sessionStorage
-      // - Enviar a tu backend
-      // - Actualizar el estado de autenticación
-      // - Navegar a otra ruta
-
-      // Ejemplo: guardar en localStorage
-      localStorage.setItem('user', JSON.stringify(userInfo));
-
-      // Ejemplo: emitir evento o actualizar servicio
-      // this.authService.setUser(userInfo);
     }
   }
 }

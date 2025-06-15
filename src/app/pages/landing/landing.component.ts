@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
@@ -11,6 +11,7 @@ import { FooterSectionComponent } from './footer-section/footer-section.componen
 import { CtaSectionComponent } from './cta-section/cta-section.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -33,9 +34,10 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingComponent {
+  document = inject(DOCUMENT);
 
   scrollToSection(section: string): void {
-    const element = document.getElementById(section);
+    const element = this.document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }

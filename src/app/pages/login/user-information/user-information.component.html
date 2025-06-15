@@ -3,6 +3,16 @@
     Tell us about yourself in order to customize your experience
   </h3>
 
+  <div class="user-email">
+    <strong class="email">
+      {{
+      newUserEmail()
+      }}
+    </strong>
+  </div>
+
+
+
   <form [formGroup]="form" class="form">
     <mat-form-field appearance="outline">
       <mat-label>Full name</mat-label>
@@ -14,7 +24,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Company name</mat-label>
-      <input matInput formControlName="company" required>
+      <input matInput formControlName="company_name" required>
       <mat-error>
         Company name is required
       </mat-error>

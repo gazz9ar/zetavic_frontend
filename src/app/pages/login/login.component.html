@@ -4,26 +4,35 @@
     isFreeTrial() ? 'Start 14 days free trial' : 'Login'
     }}
   </h3>
-  <ui-google-sso [isSignUp]="isFreeTrial()"></ui-google-sso>
+  <ui-google-sso [isSignUp]="isFreeTrial()" (onErrorPopupFedCM)="showTraditionalGoogleSignIn.set(true)"
+    (onSuccess)="login($event)">
+  </ui-google-sso>
 
+  @if(showTraditionalGoogleSignIn()) {
   <div class="section-divider">
     <span class="divider"></span>
     <span>o</span>
     <span class="divider"></span>
   </div>
+  }
+
 
   <form [formGroup]="form" class="form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" required>
+      <input matInput type="email" formControlName="email" required>
       <mat-error>
-        Email is required
+        {{
+        emailControl?.hasError('required') ? 'Email is required' : 'Invalid email format'
+        }}
+
       </mat-error>
+
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" required="">
+      <input autocomplete="" matInput type="password" formControlName="password" required="">
       <mat-error>
         Password is required
       </mat-error>
